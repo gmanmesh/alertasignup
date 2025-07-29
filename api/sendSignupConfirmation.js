@@ -9,10 +9,10 @@ export default async function handler(req, res) {
 
   // Load environment variables
   const {
-    GOOGLE_CLIENT_ID,
-    GOOGLE_CLIENT_SECRET,
-    GOOGLE_REFRESH_TOKEN,
-    SENDER_EMAIL,
+    GOOGLE_CLIENT_ID2,
+    GOOGLE_CLIENT_SECRET2,
+    GOOGLE_REFRESH_TOKEN2,
+    SENDER_EMAIL2,
   } = process.env;
 
   // Create OAuth2 transporter
@@ -20,10 +20,10 @@ export default async function handler(req, res) {
     service: 'gmail',
     auth: {
       type: 'OAuth2',
-      user:SENDER_EMAIL,
-      clientId:GOOGLE_CLIENT_ID,
-      clientSecret:GOOGLE_CLIENT_SECRET,
-      refreshToken:GOOGLE_REFRESH_TOKEN,
+      user: SENDER_EMAIL2,
+      clientId: GOOGLE_CLIENT_ID2,
+      clientSecret: GOOGLE_CLIENT_SECRET2,
+      refreshToken: GOOGLE_REFRESH_TOKEN2,
     },
     debug: true,
     logger: true,

@@ -6,24 +6,15 @@ export default async function handler(req, res) {
   }
 
   const { to, html} = req.body;
-
-  // Load environment variables
-  const {
-    GOOGLE_CLIENT_ID2,
-    GOOGLE_CLIENT_SECRET2,
-    GOOGLE_REFRESH_TOKEN2,
-    SENDER_EMAIL2,
-  } = process.env;
-
   // Create OAuth2 transporter
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       type: 'OAuth2',
-      user: SENDER_EMAIL2,
-      clientId: GOOGLE_CLIENT_ID2,
-      clientSecret: GOOGLE_CLIENT_SECRET2,
-      refreshToken: GOOGLE_REFRESH_TOKEN2,
+      user: process.env.SENDER_EMAIL2,
+      clientId: process.env.GOOGLE_CLIENT_ID2,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET2,
+      refreshToken: process.env.GOOGLE_REFRESH_TOKEN2,
     },
     debug: true,
     logger: true,

@@ -8,7 +8,9 @@ export default async function handler(req, res) {
   const { to, html} = req.body;
   // Create OAuth2 transporter
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
       type: 'OAuth2',
       user: process.env.SENDER_EMAIL2,
@@ -16,6 +18,9 @@ export default async function handler(req, res) {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET2,
       refreshToken: process.env.GOOGLE_REFRESH_TOKEN2,
     },
+    tls: {
+    rejectUnauthorized: false, // disabling SSL validation if needed
+  },
     debug: true,
     logger: true,
   });

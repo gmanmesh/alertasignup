@@ -20,17 +20,17 @@ export default async function handler(req, res) {
     service: 'gmail',
     auth: {
       type: 'OAuth2',
-      user: SENDER_EMAIL,
-      clientId: GOOGLE_CLIENT_ID,
-      clientSecret: GOOGLE_CLIENT_SECRET,
-      refreshToken: GOOGLE_REFRESH_TOKEN,
+      user:SENDER_EMAIL,
+      clientId:GOOGLE_CLIENT_ID,
+      clientSecret:GOOGLE_CLIENT_SECRET,
+      refreshToken:GOOGLE_REFRESH_TOKEN,
     },
   });
 
   // Email details
   const mailOptions = {
-    from: SENDER_EMAIL,
-    to: to,
+    from:SENDER_EMAIL,
+    to:to,
     subject: 'Welcome to Alerta - Your Phone Security App',
     html: html,
   };

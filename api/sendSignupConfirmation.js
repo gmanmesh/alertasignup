@@ -25,6 +25,8 @@ export default async function handler(req, res) {
       clientSecret:GOOGLE_CLIENT_SECRET,
       refreshToken:GOOGLE_REFRESH_TOKEN,
     },
+    debug: true,
+    logger: true,
   });
 
   // Email details
@@ -41,6 +43,6 @@ export default async function handler(req, res) {
     res.status(200).json({ message: 'Welcome email sent', messageId: info.messageId });
   } catch (err) {
     console.error('Error sending welcome email:', err);
-    res.status(500).json({ error: 'Failed to send email' });
+    res.status(500).json({ error: err.message || 'Failed to send email' });
   }
 }
